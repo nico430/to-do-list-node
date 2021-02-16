@@ -15,10 +15,22 @@ class Tareas {
 
     _listado = {};
 
+    get listadoArr() {
+        // hago un arreglo en el cual voy a guardar todas las tareas por
+        const listado = [];
+        //elobject.key retorna un arreglo de todas las llaves que halla en tal objeto
+        //a este arreglo retornado por el object.key lo paso por el forEach para hacer una accion para cada uno de ellos la cual seria crear una variable que almacene cada objeto del listado y lo guarde en el arreglo listado en el cual voy a poder separar tarea por tarea;
+        Object.keys(this._listado).forEach(key => {
+            const tarea = this._listado[key];
+            listado.push(tarea);
+        })
+
+        return listado;
+    }
+
     constructor() {
         this._listado = {};
     }
-
 
     crearTarea(desc = '') {
 

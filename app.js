@@ -13,9 +13,8 @@ const main = async() => {
 
     const tareasDB = leerDB();
 
-    if (tareasDB) {
-        //establecer las tareas
-
+    if (tareasDB) { //cargar tareas
+        tareas.cargarTareasFromArray(tareasDB);
     }
     await pausa();
 
@@ -32,11 +31,18 @@ const main = async() => {
                 break;
 
             case '2':
-                console.log(tareas.listadoArr);
+                tareas.listadoCompleto();
+                break;
+
+            case '3':
+                tareas.listadoCompletasIncompletas(true);
+                break;
+            case '4':
+                tareas.listadoCompletasIncompletas(null);
                 break;
         }
 
-        //guardarArchivo(tareas.listadoArr);
+        guardarArchivo(tareas.listadoArr);
 
         await pausa()
 

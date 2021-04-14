@@ -9,7 +9,6 @@ Ejemplo de listado
             { 'uuid-123-1233523-12341-23 : {id:2 , desc: asdfa , completadoEn: fecha}}
 */
 
-//Nota: las variables pueden empezar con giones bajos eparte del nombre
 //los corchetes al final de this._listado se usan para crear un elemento dentro del objeto
 
 class Tareas {
@@ -91,6 +90,27 @@ class Tareas {
             }
         })
     }
+
+
+    toggleCompletadas(ids = []) {
+
+        ids.forEach(id => {
+
+            const tarea = this._listado[id];
+            if (!tarea.completadoEn) {
+                tarea.completadoEn = new Date().toISOString()
+            }
+
+        })
+
+        this.listadoArr.forEach(tarea => {
+            if (!ids.includes(tarea.id)) {
+                this._listado[tarea.id].completadoEn = null
+            }
+        })
+
+    }
+
 }
 
 
